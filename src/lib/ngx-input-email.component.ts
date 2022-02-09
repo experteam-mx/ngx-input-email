@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, AfterViewInit, AfterContentInit, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, AfterViewInit, AfterContentInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, Validators, FormArray, FormGroup, FormControl } from "@angular/forms";
 import { createMask } from '@ngneat/input-mask';
 
@@ -7,9 +7,7 @@ import { createMask } from '@ngneat/input-mask';
   templateUrl: './ngx-input-email.component.html',
   styleUrls: ['./ngx-input-email.component.sass']
 })
-export class NgxInputEmailComponent implements OnInit {
-
-  constructor() { }
+export class NgxInputEmailComponent implements OnInit, OnDestroy {
 
   @ViewChild('inputElement') inputElement!: ElementRef;
 
@@ -18,8 +16,16 @@ export class NgxInputEmailComponent implements OnInit {
   @Input() idForLabel: any = ""
   @Input() addClass: any = "form-control"
 
+  constructor() {
+  }
+
   inputMask = createMask({
-    regex: "^[a-z0-9._%+-]{3,30}@[a-z0-9-_]{3,20}\\.[a-z]{2,4}(\\.[a-z]{2,4})?$"
+    regex: "^[a-z0-9._%+-]{3,30}@[a-z0-9-_]{3,20}\\.[a-z]{2,4}(\\.[a-z]{2,4})?$",
+    //alias: 'email'
+    clearIncomplete: true,
+    onincomplete: ()=>{
+      this.control.setValue(null)
+    }
   })
 
   placeholder = "___@___.__"
@@ -33,6 +39,9 @@ export class NgxInputEmailComponent implements OnInit {
   }
 
   ngAfterContentInit(): void {
+  }
+
+  ngOnDestroy(): void {
   }
 
   ngOnInit(): void {

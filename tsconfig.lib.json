@@ -6,6 +6,7 @@
     "declaration": true,
     "declarationMap": true,
     "inlineSources": true,
+    "allowSyntheticDefaultImports": true,
     "types": []
   },
   "angularCompilerOptions": {
@@ -13,7 +14,7 @@
     "strictMetadataEmit": true,
     "enableResourceInlining": true,
     "strictTemplates": false,
-    "enableIvy": false
+    "enableIvy": false,
   },
   "exclude": [
     "src/test.ts",

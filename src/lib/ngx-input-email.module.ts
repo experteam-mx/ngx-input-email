@@ -14,7 +14,10 @@ import { NgxInputEmailComponent } from './ngx-input-email.component';
   imports: [
     FormsModule,
     ReactiveFormsModule,
-    InputMaskModule
+    InputMaskModule.forRoot({
+      isAsync: true, // set to true if native input is lazy loaded
+      inputSelector: 'input',
+    }),
   ],
   exports: [
     NgxInputEmailComponent
