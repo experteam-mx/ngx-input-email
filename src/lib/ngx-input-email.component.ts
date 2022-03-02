@@ -20,7 +20,7 @@ export class NgxInputEmailComponent implements OnInit, OnDestroy {
   }
 
   inputMask = createMask({
-    regex: "^[a-z0-9._%+-]{3,30}@[a-z0-9-_]{3,20}\\.[a-z]{2,4}(\\.[a-z]{2,4})?$",
+    regex: "^[a-zA-Z0-9._%+-]{2,30}@[a-zA-Z0-9-_]{2,20}\\.[a-zA-Z]{2,4}(\\.[a-zA-Z]{2,4})?$",
     //alias: 'email'
     clearIncomplete: true,
     onincomplete: ()=>{
@@ -28,7 +28,7 @@ export class NgxInputEmailComponent implements OnInit, OnDestroy {
     }
   })
 
-  placeholder = "___@___.__"
+  placeholder = "__@__.__"
 
   ngAfterViewInit(): void {
     if( this.autofocus ){
