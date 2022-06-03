@@ -14,6 +14,7 @@ export class NgxInputEmailComponent implements OnInit, OnDestroy {
   @Input() control!: FormControl
   @Input() autofocus: any = false
   @Input() idForLabel: any = ""
+  @Input() tabIndex: any
   @Input() addClass: any = "form-control"
 
   constructor() {
